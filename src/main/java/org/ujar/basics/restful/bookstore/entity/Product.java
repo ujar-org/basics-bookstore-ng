@@ -19,7 +19,7 @@ import lombok.Setter;
 @Table(name = Product.TABLE_NAME)
 public class Product {
 
-  protected static final String TABLE_NAME = "basics_rest_user_profiles";
+  protected static final String TABLE_NAME = "bookstore_products";
 
   @Id
   @SequenceGenerator(

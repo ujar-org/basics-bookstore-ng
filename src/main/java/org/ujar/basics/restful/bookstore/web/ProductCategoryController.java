@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.ujar.basics.restful.bookstore.dto.ErrorResponse;
 import org.ujar.basics.restful.bookstore.entity.ProductCategory;
+import org.ujar.basics.restful.bookstore.exception.EntityNotFoundException;
 import org.ujar.basics.restful.bookstore.repository.ProductCategoryRepository;
-import org.ujar.boot.starter.restful.web.dto.ErrorResponse;
 
 @RestController
-@Tag(name = "Product category controller", description = "API for product categories management")
+@Tag(name = "Product category controller", description = "API for product categories management.")
 @RequestMapping("/api/v1/product-categories")
 @Validated
 @RequiredArgsConstructor
@@ -39,9 +40,14 @@ public class ProductCategoryController {
           @ApiResponse(responseCode = "400",
                        description = "Bad request",
                        content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+          @ApiResponse(responseCode = "404",
+                       description = "Entity not found",
+                       content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
       })
   public ResponseEntity<ProductCategory> findById(@PathVariable Long id) {
-    return new ResponseEntity<>(repository.findById(id).orElse(null), HttpStatus.OK);
+    var category = repository.findById(id)
+        .orElseThrow(() -> new EntityNotFoundException("Category with id = " + id + " could not found."));
+    return new ResponseEntity<>(category, HttpStatus.OK);
   }
 
   @GetMapping

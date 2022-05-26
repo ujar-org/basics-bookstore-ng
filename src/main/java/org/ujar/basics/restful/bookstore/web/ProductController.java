@@ -17,13 +17,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.ujar.basics.restful.bookstore.dto.ErrorResponse;
 import org.ujar.basics.restful.bookstore.entity.Product;
+import org.ujar.basics.restful.bookstore.exception.EntityNotFoundException;
 import org.ujar.basics.restful.bookstore.repository.ProductRepository;
-import org.ujar.boot.starter.restful.web.dto.ErrorResponse;
 import org.ujar.boot.starter.restful.web.dto.PageRequestDto;
 
 @RestController
-@Tag(name = "Product controller", description = "API for products management")
+@Tag(name = "Product controller", description = "API for products management.")
 @RequestMapping("/api/v1/products")
 @Validated
 @RequiredArgsConstructor
@@ -43,9 +44,14 @@ public class ProductController {
           @ApiResponse(responseCode = "400",
                        description = "Bad request",
                        content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+          @ApiResponse(responseCode = "404",
+                       description = "Entity not found",
+                       content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
       })
   public ResponseEntity<Product> findById(@PathVariable Long id) {
-    return new ResponseEntity<>(repository.findById(id).orElse(null), HttpStatus.OK);
+    var product = repository.findById(id)
+        .orElseThrow(() -> new EntityNotFoundException("Product with id = " + id + " could not found."));
+    return new ResponseEntity<>(product, HttpStatus.OK);
   }
 
   @GetMapping

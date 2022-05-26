@@ -1,5 +1,6 @@
 package org.ujar.basics.restful.bookstore.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -37,6 +38,7 @@ public class ProductCategory {
   private String name;
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+  @JsonIgnore
   private Set<Product> products;
 
 }
