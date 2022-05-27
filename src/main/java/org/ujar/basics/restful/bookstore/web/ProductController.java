@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.ujar.basics.restful.bookstore.dto.ErrorResponse;
 import org.ujar.basics.restful.bookstore.entity.Product;
 import org.ujar.basics.restful.bookstore.exception.EntityNotFoundException;
 import org.ujar.basics.restful.bookstore.repository.ProductRepository;
+import org.ujar.basics.restful.bookstore.web.dto.ErrorResponse;
 import org.ujar.boot.starter.restful.web.dto.PageRequestDto;
 
 @RestController

@@ -1,12 +1,8 @@
-package org.ujar.basics.restful.bookstore.dto;
+package org.ujar.basics.restful.bookstore.web.dto;
 
 import java.util.List;
-import lombok.Value;
 
-@Value
-public class ErrorResponse {
-
-  List<Error> errors;
+public record ErrorResponse(List<Error> errors) {
 
   public static ErrorResponse singleError(Throwable throwable) {
     return singleError(throwable.getMessage());
@@ -17,9 +13,7 @@ public class ErrorResponse {
     return new ErrorResponse(errors);
   }
 
-  @Value
-  public static class Error {
-    String message;
-  }
+  public record Error(String message) {
 
+  }
 }
