@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="20220422000000" author="ujar-bookstore">
+        <createSequence sequenceName="product_category_id_seq" startValue="1050" incrementBy="50"/>
+        <createTable tableName="bookstore_categories">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints unique="true" nullable="false" uniqueConstraintName="ux_product_category_name"/>
+            </column>
+        </createTable>
+
+        <createSequence sequenceName="product_id_seq" startValue="1050" incrementBy="50"/>
+        <createTable tableName="bookstore_products">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="sku" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="description" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="unit_price" type="decimal(10,2)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="image_url" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="active" type="boolean" defaultValueBoolean="false"/>
+
+            <column name="units_in_stock" type="int">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="category_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_at" type="timestamp"/>
+            <column name="updated_at" type="timestamp">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="category_id"
+                                 baseTableName="bookstore_products"
+                                 constraintName="fk_product_category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="bookstore_categories" />
+
+        <loadData file="liquibase/data/categories.csv" separator=";" tableName="bookstore_categories">
+            <column name="id" type="numeric"/>
+            <column name="name" type="string" />
+        </loadData>
+        <loadData file="liquibase/data/products_in_first_category.csv" separator=";" tableName="bookstore_products">
+            <column name="id" type="numeric"/>
+            <column name="name" type="string" />
+            <column name="description" type="string" />
+            <column name="image_url" type="string" />
+            <column name="active" type="boolean" />
+            <column name="units_in_stock" type="numeric" />
+            <column name="unit_price" type="numeric" />
+            <column name="category_id" type="numeric" />
+            <column name="created_at" type="datetime" />
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

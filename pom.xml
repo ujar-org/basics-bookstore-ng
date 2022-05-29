@@ -3,8 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.ujar.basics.restful</groupId>
-    <artifactId>bookstore</artifactId>
-    <version>0.7.0-SNAPSHOT</version>
+    <artifactId>restful-bookstore</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>basics-restful-bookstore</name>
@@ -48,6 +48,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <sonar.exclusions>**/*Application.java</sonar.exclusions>
         <sonar.coverage.exclusions>**/*Config*.java,**/*Properties.java,**/*Test.java,**/Test*.java</sonar.coverage.exclusions>
+        <ujar.boot.version>0.7.0-SNAPSHOT</ujar.boot.version>
     </properties>
 
     <dependencies>
@@ -68,12 +69,12 @@
         <dependency>
             <groupId>org.ujar.boot</groupId>
             <artifactId>ujar-boot-starter-logbook</artifactId>
-            <version>0.7.0-SNAPSHOT</version>
+            <version>${ujar.boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.ujar.boot</groupId>
             <artifactId>ujar-boot-starter-restful</artifactId>
-            <version>0.7.0-SNAPSHOT</version>
+            <version>${ujar.boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -90,6 +91,10 @@
         <dependency>
             <groupId>org.liquibase.ext</groupId>
             <artifactId>liquibase-hibernate5</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>annotations</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -113,7 +118,7 @@
             </dependencies>
         </profile>
         <profile>
-            <id>testcontainers</id>
+            <id>integration-test</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
