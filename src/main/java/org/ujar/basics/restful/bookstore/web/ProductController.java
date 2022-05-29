@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.ujar.basics.restful.bookstore.entity.Product;
-import org.ujar.basics.restful.bookstore.exception.EntityNotFoundException;
 import org.ujar.basics.restful.bookstore.repository.ProductRepository;
 import org.ujar.basics.restful.bookstore.web.dto.ErrorResponse;
 import org.ujar.boot.starter.restful.web.dto.PageRequestDto;
@@ -49,9 +48,7 @@ public class ProductController {
                        content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
       })
   public ResponseEntity<Product> findById(@PathVariable Long id) {
-    var product = repository.findById(id)
-        .orElseThrow(() -> new EntityNotFoundException("Product with id = " + id + " could not found."));
-    return new ResponseEntity<>(product, HttpStatus.OK);
+    return ResponseEntity.of(repository.findById(id));
   }
 
   @GetMapping
@@ -68,7 +65,7 @@ public class ProductController {
                        content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
       })
   public ResponseEntity<Page<Product>> findAll(@ParameterObject @Valid PageRequestDto request) {
-    var pageRequest = PageRequest.of(request.getPage(), request.getSize());
+    var pageRequest = PageRequest.of(request.getOffset(), request.getLimit());
     return new ResponseEntity<>(repository.findAll(pageRequest), HttpStatus.OK);
   }
 }
