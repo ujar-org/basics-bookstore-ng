@@ -23,7 +23,7 @@ public class ApplicationConfig {
 
   @Bean
   SpringLiquibase liquibase(@Autowired DataSource dataSource) {
-    var liquibase = new SpringLiquibase();
+    final var liquibase = new SpringLiquibase();
     liquibase.setChangeLog("classpath:liquibase/master.xml");
     liquibase.setDataSource(dataSource);
     return liquibase;

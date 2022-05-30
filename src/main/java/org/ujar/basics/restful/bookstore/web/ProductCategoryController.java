@@ -45,7 +45,7 @@ public class ProductCategoryController {
                        description = "Entity not found",
                        content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
       })
-  public ResponseEntity<ProductCategory> findById(@PathVariable Long id) {
+  public ResponseEntity<ProductCategory> findById(@PathVariable final Long id) {
     final var category = repository.findById(id)
         .orElseThrow(() -> new EntityNotFoundException("Category with id = " + id + " could not found."));
     return new ResponseEntity<>(category, HttpStatus.OK);

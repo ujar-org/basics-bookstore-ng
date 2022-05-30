@@ -48,7 +48,7 @@ public class ProductController {
                        description = "Entity not found",
                        content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
       })
-  public ResponseEntity<Product> findById(@PathVariable Long id) {
+  public ResponseEntity<Product> findById(@PathVariable final Long id) {
     return ResponseEntity.of(repository.findById(id));
   }
 
@@ -67,7 +67,7 @@ public class ProductController {
       })
   @Transactional(readOnly = true)
   public ResponseEntity<Page<Product>> findAll(@ParameterObject @Valid PageRequestDto request) {
-    final var pageRequest = PageRequest.of(request.getOffset(), request.getLimit());
+    final var pageRequest = PageRequest.of(request.getPage(), request.getLimit());
     return new ResponseEntity<>(repository.findAll(pageRequest), HttpStatus.OK);
   }
 }
