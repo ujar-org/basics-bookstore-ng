@@ -11,7 +11,7 @@ public record ErrorResponse(List<Error> errors) {
   }
 
   public static ErrorResponse singleError(String message) {
-    var errors = List.of(new ErrorResponse.Error(message));
+    final var errors = List.of(new ErrorResponse.Error(message));
     return new ErrorResponse(errors);
   }
 
