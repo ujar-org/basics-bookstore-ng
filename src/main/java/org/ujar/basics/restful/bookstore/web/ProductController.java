@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -64,8 +65,9 @@ public class ProductController {
                        description = "Bad request",
                        content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
       })
+  @Transactional(readOnly = true)
   public ResponseEntity<Page<Product>> findAll(@ParameterObject @Valid PageRequestDto request) {
-    var pageRequest = PageRequest.of(request.getOffset(), request.getLimit());
+    final var pageRequest = PageRequest.of(request.getOffset(), request.getLimit());
     return new ResponseEntity<>(repository.findAll(pageRequest), HttpStatus.OK);
   }
 }
