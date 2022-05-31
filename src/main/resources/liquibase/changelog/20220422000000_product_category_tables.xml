@@ -24,7 +24,7 @@
             </column>
 
             <column name="sku" type="varchar(255)">
-                <constraints nullable="false"/>
+                <constraints unique="true" nullable="false" uniqueConstraintName="ux_product_sku"/>
             </column>
 
             <column name="name" type="varchar(255)">
@@ -69,8 +69,21 @@
             <column name="id" type="numeric"/>
             <column name="name" type="string" />
         </loadData>
-        <loadData file="liquibase/data/products_in_first_category.csv" separator=";" tableName="bookstore_products">
+        <loadData file="liquibase/data/initial/Programming-category-products.csv" separator=";" tableName="bookstore_products">
             <column name="id" type="numeric"/>
+            <column name="sku" type="string" />
+            <column name="name" type="string" />
+            <column name="description" type="string" />
+            <column name="image_url" type="string" />
+            <column name="active" type="boolean" />
+            <column name="units_in_stock" type="numeric" />
+            <column name="unit_price" type="numeric" />
+            <column name="category_id" type="numeric" />
+            <column name="created_at" type="datetime" />
+        </loadData>
+        <loadData file="liquibase/data/initial/Web-development-category-products.csv" separator=";" tableName="bookstore_products">
+            <column name="id" type="numeric"/>
+            <column name="sku" type="string" />
             <column name="name" type="string" />
             <column name="description" type="string" />
             <column name="image_url" type="string" />
@@ -81,5 +94,4 @@
             <column name="created_at" type="datetime" />
         </loadData>
     </changeSet>
-
 </databaseChangeLog>
