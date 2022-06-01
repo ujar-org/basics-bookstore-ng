@@ -11,13 +11,17 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = ProductCategory.TABLE_NAME)
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductCategory {
 
   protected static final String TABLE_NAME = "bookstore_categories";
