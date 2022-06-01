@@ -92,7 +92,7 @@ public class ProductCategoryController {
       })
   @Transactional(readOnly = true)
   public ResponseEntity<Page<Product>> findProductsByCategoryId(@PathVariable final Long id,
-                                                                @ParameterObject @Valid PageRequestDto request) {
+                                                                @ParameterObject @Valid final PageRequestDto request) {
     final var category = existingCategory(id);
     final var pageRequest = PageRequest.of(request.getPage(), request.getLimit());
     return new ResponseEntity<>(productRepository.findAllByCategory(category, pageRequest), HttpStatus.OK);

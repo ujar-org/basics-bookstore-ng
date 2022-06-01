@@ -41,7 +41,7 @@ class ProductCategoryControllerTest {
 
   @Test
   @SneakyThrows
-  void findByIdShouldReceiveNotFound() {
+  void findByIdShouldReturnNotFound() {
     mockMvc.perform(
             get("/api/v1/product-categories/1"))
         .andExpect(status().isNotFound());
@@ -50,7 +50,7 @@ class ProductCategoryControllerTest {
 
   @Test
   @SneakyThrows
-  void findProductsByCategoryIdShouldReceiveNotFound() {
+  void findProductsByCategoryIdShouldReturnNotFound() {
     mockMvc.perform(
             get("/api/v1/product-categories/1/products"))
         .andExpect(status().isNotFound());
@@ -59,12 +59,10 @@ class ProductCategoryControllerTest {
 
   @Test
   @SneakyThrows
-  void findProductsByCategoryIdShouldReceiveListWithOneBook() {
-    var category =  new ProductCategory(1L, "Books", new HashSet<Product>());
+  void findProductsByCategoryIdShouldReturnListWithOneBook() {
+    var category =  new ProductCategory(1L, "Books", new HashSet<>());
     var pageRequest = PageRequest.of(0, 10);
-    when(categoryRepository.findById(1L)).thenAnswer(
-        (inv) -> Optional.of(category)
-    );
+    when(categoryRepository.findById(1L)).thenReturn(Optional.of(category));
     when(productRepository.findAllByCategory(category, pageRequest))
         .thenReturn(new PageImpl<>(List.of(new Product())));
     mockMvc.perform(
@@ -109,7 +107,7 @@ class ProductCategoryControllerTest {
 
   @Test
   @SneakyThrows
-  void findAllShouldReceiveEmptyList() {
+  void findAllShouldReturnEmptyList() {
     mockMvc.perform(
             get("/api/v1/product-categories"))
         .andExpect(status().isOk())
