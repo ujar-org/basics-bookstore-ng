@@ -1,6 +1,8 @@
 package org.ujar.basics.restful.bookstore.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
+import java.time.Instant;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +16,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 @Entity
 @Getter
@@ -61,5 +64,10 @@ public class Product {
 
   @Column(name = "units_in_stock")
   private int unitsInStock;
+
+  @CreatedDate
+  @Column(name = "created_at")
+  @JsonProperty("created_at")
+  private Instant createdAt;
 
 }

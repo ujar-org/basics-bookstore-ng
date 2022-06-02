@@ -82,7 +82,8 @@ class ProductCategoryControllerTest {
                       "unitPrice":null,
                       "imageUrl":null,
                       "active":false,
-                      "unitsInStock":0
+                      "unitsInStock":0,
+                      "created_at":null
                     }
                   ],
                   "pageable":"INSTANCE",
