@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="20220512000000" author="ujar-bookstore">
+        <createSequence sequenceName="geo_country_id_seq" startValue="1050" incrementBy="50"/>
+        <createTable tableName="geo_countries">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="code" type="varchar(2)">
+                <constraints unique="true" nullable="false" uniqueConstraintName="ux_geo_country_code"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints unique="true" nullable="false" uniqueConstraintName="ux_geo_country_name"/>
+            </column>
+        </createTable>
+
+        <loadData file="liquibase/data/geo/countries.csv" separator=";" tableName="geo_countries">
+            <column name="id" type="numeric"/>
+            <column name="code" type="string" />
+            <column name="name" type="string" />
+        </loadData>
+
+        <createSequence sequenceName="geo_state_id_seq" startValue="1050" incrementBy="50"/>
+        <createTable tableName="geo_states">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="country_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="country_id"
+                                 baseTableName="geo_states"
+                                 constraintName="fk_geo_country_state_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="geo_countries" />
+
+        <loadData file="liquibase/data/geo/states.csv" separator=";" tableName="geo_states">
+            <column name="id" type="numeric"/>
+            <column name="name" type="string" />
+            <column name="country_id" type="numeric" />
+        </loadData>
+    </changeSet>
+</databaseChangeLog>
