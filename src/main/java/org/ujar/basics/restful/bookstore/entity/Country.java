@@ -10,13 +10,17 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = Country.TABLE_NAME)
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Country {
 
   protected static final String TABLE_NAME = "geo_countries";
@@ -31,7 +35,7 @@ public class Country {
       generator = "geo_country_id_seq"
   )
   @Column(name = "id")
-  private int id;
+  private Long id;
 
   @Column(name = "code")
   private String code;
