@@ -7,4 +7,5 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <include file="liquibase/changelog/20220422000000_product_category_tables.xml"/>
+    <include file="liquibase/changelog/20220512000000_countries_and_states.xml"/>
 </databaseChangeLog>
