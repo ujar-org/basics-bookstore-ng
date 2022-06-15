@@ -66,7 +66,7 @@ public class StateController {
       })
   @Transactional(readOnly = true)
   public ResponseEntity<Page<State>> findAll(@ParameterObject @Valid final PageRequestDto request) {
-    final var pageRequest = PageRequest.of(request.getPage(), request.getLimit());
+    final var pageRequest = PageRequest.of(request.getPage(), request.getSize());
     return new ResponseEntity<>(stateRepository.findAll(pageRequest), HttpStatus.OK);
   }
 }

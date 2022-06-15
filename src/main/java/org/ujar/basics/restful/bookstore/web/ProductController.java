@@ -69,7 +69,7 @@ public class ProductController {
   @Transactional(readOnly = true)
   public ResponseEntity<Page<Product>> findAll(@RequestParam(required = false) final String name,
                                                @ParameterObject @Valid final PageRequestDto request) {
-    final var pageRequest = PageRequest.of(request.getPage(), request.getLimit());
+    final var pageRequest = PageRequest.of(request.getPage(), request.getSize());
     Page<Product> page;
     if (!ObjectUtils.isEmpty(name)) {
       page = productRepository.findByNameContaining(name, pageRequest);
