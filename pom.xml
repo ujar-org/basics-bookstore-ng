@@ -118,7 +118,7 @@
             </dependencies>
         </profile>
         <profile>
-            <id>integration-test</id>
+            <id>testcontainers-support</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
