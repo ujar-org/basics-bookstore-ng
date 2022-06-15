@@ -33,7 +33,6 @@ steps:
       SONAR_TOKEN :
         from_secret : SONAR_TOKEN
     commands:
-      - rm -rf /root/.m2/repository/org/ujar/
       - mvn clean compile test-compile -B  --file pom.xml -s settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
       - mvn pmd:check -B --file pom.xml -s settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
       - mvn com.github.spotbugs:spotbugs-maven-plugin:check -Dspotbugs.xmlOutput=true -Dspotbugs.failOnError=true -Dspotbugs.includeTests=true  --file pom.xml -s settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
