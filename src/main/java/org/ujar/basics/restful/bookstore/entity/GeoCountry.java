@@ -16,12 +16,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = Country.TABLE_NAME)
+@Table(name = GeoCountry.TABLE_NAME)
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Country {
+public class GeoCountry {
 
   protected static final String TABLE_NAME = "geo_countries";
 
@@ -45,7 +45,7 @@ public class Country {
 
   @OneToMany(mappedBy = "country")
   @JsonIgnore
-  private List<State> states;
+  private List<GeoState> geoStates;
 
 }
 
