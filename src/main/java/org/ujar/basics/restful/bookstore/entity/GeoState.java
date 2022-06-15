@@ -15,12 +15,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = State.TABLE_NAME)
+@Table(name = GeoState.TABLE_NAME)
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class State {
+public class GeoState {
 
   protected static final String TABLE_NAME = "geo_states";
 
@@ -41,7 +41,7 @@ public class State {
 
   @ManyToOne
   @JoinColumn(name = "country_id")
-  private Country country;
+  private GeoCountry country;
 
 }
 

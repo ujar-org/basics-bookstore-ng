@@ -16,23 +16,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.ujar.basics.restful.bookstore.entity.Country;
-import org.ujar.basics.restful.bookstore.entity.State;
-import org.ujar.basics.restful.bookstore.repository.CountryRepository;
-import org.ujar.basics.restful.bookstore.repository.StateRepository;
+import org.ujar.basics.restful.bookstore.entity.GeoCountry;
+import org.ujar.basics.restful.bookstore.entity.GeoState;
+import org.ujar.basics.restful.bookstore.repository.GeoCountryRepository;
+import org.ujar.basics.restful.bookstore.repository.GeoStateRepository;
 
-@WebMvcTest(value = CountryController.class)
-class CountryControllerTest {
+@WebMvcTest(value = GeoCountryController.class)
+class GeoCountryControllerTest {
 
   private final MockMvc mockMvc;
 
   @MockBean
-  private CountryRepository countryRepository;
+  private GeoCountryRepository countryRepository;
 
   @MockBean
-  private StateRepository stateRepository;
+  private GeoStateRepository stateRepository;
 
-  public CountryControllerTest(@Autowired MockMvc mockMvc) {
+  public GeoCountryControllerTest(@Autowired MockMvc mockMvc) {
     this.mockMvc = mockMvc;
   }
 
@@ -57,10 +57,10 @@ class CountryControllerTest {
   @Test
   @SneakyThrows
   void findStatesByCountryIdShouldReturnListWithOneState() {
-    var country = new Country(1L, "US", "USA", List.of());
+    var country = new GeoCountry(1L, "US", "USA", List.of());
     when(countryRepository.findById(1L)).thenReturn(Optional.of(country));
     when(stateRepository.findAllByCountry(country))
-        .thenReturn(List.of(new State()));
+        .thenReturn(List.of(new GeoState()));
     mockMvc.perform(
             get("/api/v1/countries/1/states"))
         .andDo(print())

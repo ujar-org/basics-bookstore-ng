@@ -14,17 +14,17 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.web.servlet.MockMvc;
-import org.ujar.basics.restful.bookstore.repository.StateRepository;
+import org.ujar.basics.restful.bookstore.repository.GeoStateRepository;
 
-@WebMvcTest(value = StateController.class)
-class StateControllerTest {
+@WebMvcTest(value = GeoStateController.class)
+class GeoStateControllerTest {
 
   private final MockMvc mockMvc;
 
   @MockBean
-  private StateRepository stateRepository;
+  private GeoStateRepository stateRepository;
 
-  StateControllerTest(@Autowired MockMvc mockMvc) {
+  GeoStateControllerTest(@Autowired MockMvc mockMvc) {
     this.mockMvc = mockMvc;
   }
 
