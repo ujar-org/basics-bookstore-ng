@@ -94,7 +94,7 @@ public class ProductCategoryController {
   public ResponseEntity<Page<Product>> findProductsByCategoryId(@PathVariable final Long id,
                                                                 @ParameterObject @Valid final PageRequestDto request) {
     final var category = existingCategory(id);
-    final var pageRequest = PageRequest.of(request.getPage(), request.getLimit());
+    final var pageRequest = PageRequest.of(request.getPage(), request.getSize());
     return new ResponseEntity<>(productRepository.findAllByCategory(category, pageRequest), HttpStatus.OK);
   }
 
