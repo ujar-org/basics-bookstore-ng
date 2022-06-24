@@ -45,6 +45,7 @@ class ProductCategoryControllerTest {
     mockMvc.perform(
             get("/api/v1/product-categories/1"))
         .andExpect(status().isNotFound());
+
     verify(categoryRepository, atLeastOnce()).findById(1L);
   }
 
@@ -54,6 +55,7 @@ class ProductCategoryControllerTest {
     mockMvc.perform(
             get("/api/v1/product-categories/1/products"))
         .andExpect(status().isNotFound());
+
     verify(categoryRepository, atLeastOnce()).findById(1L);
   }
 
@@ -65,6 +67,7 @@ class ProductCategoryControllerTest {
     when(categoryRepository.findById(1L)).thenReturn(Optional.of(category));
     when(productRepository.findAllByCategory(category, pageRequest))
         .thenReturn(new PageImpl<>(List.of(new Product())));
+
     mockMvc.perform(
             get("/api/v1/product-categories/1/products"))
         .andDo(print())
@@ -102,6 +105,7 @@ class ProductCategoryControllerTest {
                   "empty":false
                 }""", true
         ));
+
     verify(categoryRepository).findById(1L);
     verify(productRepository).findAllByCategory(category, pageRequest);
   }
@@ -115,6 +119,7 @@ class ProductCategoryControllerTest {
         .andExpect(content().json(
             "[]", true
         ));
+
     verify(categoryRepository).findAll();
   }
 }

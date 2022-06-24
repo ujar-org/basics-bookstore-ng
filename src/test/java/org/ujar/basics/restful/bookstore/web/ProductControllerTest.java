@@ -40,6 +40,7 @@ class ProductControllerTest {
     mockMvc.perform(
             get("/api/v1/products/1"))
         .andExpect(status().isNotFound());
+
     verify(productRepository, atLeastOnce()).findById(1L);
   }
 
@@ -49,10 +50,12 @@ class ProductControllerTest {
     var pageRequest = PageRequest.of(0, 10);
     when(productRepository.findByNameContaining("Linux", pageRequest))
         .thenReturn(new PageImpl<>(List.of(new Product())));
+
     mockMvc.perform(
             get("/api/v1/products").param("name", "Linux"))
         .andDo(print())
         .andExpect(status().isOk());
+
     verify(productRepository).findByNameContaining("Linux", pageRequest);
   }
 
@@ -66,6 +69,7 @@ class ProductControllerTest {
         .andExpect(status().isOk());
 
     var captor = ArgumentCaptor.forClass(Pageable.class);
+
     verify(productRepository).findAll(captor.capture());
     assertThat(captor.getValue().getPageNumber()).isEqualTo(1L);
   }

@@ -49,6 +49,7 @@
         <sonar.exclusions>**/*Application.java</sonar.exclusions>
         <sonar.coverage.exclusions>**/*Config*.java,**/*Properties.java,**/*Test.java,**/Test*.java</sonar.coverage.exclusions>
         <ujar.boot.version>0.8.0-SNAPSHOT</ujar.boot.version>
+        <start-class>org.ujar.basics.restful.bookstore.BookstoreApplication</start-class>
     </properties>
 
     <dependencies>
@@ -73,6 +74,11 @@
         </dependency>
         <dependency>
             <groupId>org.ujar.boot</groupId>
+            <artifactId>ujar-boot-starter-cache</artifactId>
+            <version>${ujar.boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ujar.boot</groupId>
             <artifactId>ujar-boot-starter-restful</artifactId>
             <version>${ujar.boot.version}</version>
         </dependency>
@@ -92,6 +98,7 @@
             <groupId>org.liquibase.ext</groupId>
             <artifactId>liquibase-hibernate5</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>annotations</artifactId>
@@ -118,9 +125,21 @@
             </dependencies>
         </profile>
         <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-devtools</artifactId>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
             <id>testcontainers-support</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <dependencies>
                 <dependency>
@@ -141,6 +160,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>${start-class}</mainClass>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
