@@ -42,6 +42,7 @@ class GeoCountryControllerTest {
     mockMvc.perform(
             get("/api/v1/countries/1"))
         .andExpect(status().isNotFound());
+
     verify(countryRepository, atLeastOnce()).findById(1L);
   }
 
@@ -51,6 +52,7 @@ class GeoCountryControllerTest {
     mockMvc.perform(
             get("/api/v1/countries/1/states"))
         .andExpect(status().isNotFound());
+
     verify(countryRepository, atLeastOnce()).findById(1L);
   }
 
@@ -61,6 +63,7 @@ class GeoCountryControllerTest {
     when(countryRepository.findById(1L)).thenReturn(Optional.of(country));
     when(stateRepository.findAllByCountry(country))
         .thenReturn(List.of(new GeoState()));
+
     mockMvc.perform(
             get("/api/v1/countries/1/states"))
         .andDo(print())
@@ -70,6 +73,7 @@ class GeoCountryControllerTest {
                  [{"id":0,"name":null,"country":null}]
                 """, true
         ));
+
     verify(countryRepository).findById(1L);
     verify(stateRepository).findAllByCountry(country);
   }
@@ -83,6 +87,7 @@ class GeoCountryControllerTest {
         .andExpect(content().json(
             "[]", true
         ));
+
     verify(countryRepository).findAll();
   }
 }

@@ -19,12 +19,29 @@ spring :
     open-in-view : true
     properties :
       hibernate.jdbc.time_zone : UTC
+      hibernate.id.new_generator_mappings : true
+      hibernate.connection.provider_disables_autocommit : true
+      hibernate.cache.use_second_level_cache : true
+      hibernate.cache.use_query_cache : true
+      hibernate.generate_statistics : false
+      # modify batch size as necessary
+      hibernate.jdbc.batch_size : 25
+      hibernate.order_inserts : true
+      hibernate.order_updates : true
+      hibernate.query.fail_on_pagination_over_collection_fetch : true
+      hibernate.query.in_clause_parameter_padding : true
     show-sql : false
 
   jackson :
     default-property-inclusion : NON_NULL
   lifecycle :
     timeout-per-shutdown-phase : ${TIMEOUT_PER_SHUTDOWN:20s}
+  devtools :
+    add-properties : false
+    restart :
+      enabled : false
+    livereload :
+      enabled : false
 
 logging :
   level :
@@ -42,9 +59,9 @@ logbook :
     - /swagger-ui/**
     - /swagger-resources/**
     - /metrics
-  filter:
+  filter :
     enabled : true
-  format:
+  format :
     style : json
   obfuscate :
     headers :
