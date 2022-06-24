@@ -34,6 +34,7 @@ class GeoStateControllerTest {
     mockMvc.perform(
             get("/api/v1/states/1"))
         .andExpect(status().isNotFound());
+
     verify(stateRepository, atLeastOnce()).findById(1L);
   }
 
@@ -47,6 +48,7 @@ class GeoStateControllerTest {
         .andExpect(status().isOk());
 
     var captor = ArgumentCaptor.forClass(Pageable.class);
+
     verify(stateRepository).findAll(captor.capture());
     assertThat(captor.getValue().getPageNumber()).isEqualTo(1L);
   }
