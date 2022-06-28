@@ -54,6 +54,19 @@ public class Address {
   @OneToOne
   @PrimaryKeyJoinColumn
   private Order order;
+
+  @Override
+  public String toString() {
+    return "Address{" +
+           "id=" + id +
+           ", street='" + street + '\'' +
+           ", city='" + city + '\'' +
+           ", state='" + state + '\'' +
+           ", country='" + country + '\'' +
+           ", zipCode='" + zipCode + '\'' +
+           ", order=" + order +
+           '}';
+  }
 }
 
 

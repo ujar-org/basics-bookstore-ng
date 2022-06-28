@@ -91,6 +91,23 @@ public class Order {
       item.setOrder(this);
     }
   }
+
+  @Override
+  public String toString() {
+    return "Order{" +
+           "id=" + id +
+           ", orderTrackingNumber='" + orderTrackingNumber + '\'' +
+           ", totalQuantity=" + totalQuantity +
+           ", totalPrice=" + totalPrice +
+           ", status='" + status + '\'' +
+           ", dateCreated=" + dateCreated +
+           ", lastUpdated=" + lastUpdated +
+           ", orderItems=" + orderItems +
+           ", customer=" + customer +
+           ", shippingAddress=" + shippingAddress +
+           ", billingAddress=" + billingAddress +
+           '}';
+  }
 }
 
 

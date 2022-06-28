@@ -47,6 +47,15 @@ public class GeoCountry {
   @JsonIgnore
   private List<GeoState> geoStates;
 
+  @Override
+  public String toString() {
+    return "GeoCountry{" +
+           "id=" + id +
+           ", code='" + code + '\'' +
+           ", name='" + name + '\'' +
+           ", geoStates=" + geoStates +
+           '}';
+  }
 }
 
 
