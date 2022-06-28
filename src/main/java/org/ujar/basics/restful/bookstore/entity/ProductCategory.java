@@ -45,4 +45,12 @@ public class ProductCategory {
   @JsonIgnore
   private Set<Product> products;
 
+  @Override
+  public String toString() {
+    return "ProductCategory{" +
+           "id=" + id +
+           ", name='" + name + '\'' +
+           ", products=" + products +
+           '}';
+  }
 }

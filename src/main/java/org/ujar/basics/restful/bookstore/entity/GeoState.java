@@ -43,6 +43,14 @@ public class GeoState {
   @JoinColumn(name = "country_id")
   private GeoCountry country;
 
+  @Override
+  public String toString() {
+    return "GeoState{" +
+           "id=" + id +
+           ", name='" + name + '\'' +
+           ", country=" + country +
+           '}';
+  }
 }
 
 
