@@ -53,6 +53,17 @@ public class OrderItem {
   @JoinColumn(name = "order_id")
   private Order order;
 
+  @Override
+  public String toString() {
+    return "OrderItem{" +
+           "id=" + id +
+           ", imageUrl='" + imageUrl + '\'' +
+           ", unitPrice=" + unitPrice +
+           ", quantity=" + quantity +
+           ", productId=" + productId +
+           ", order=" + order +
+           '}';
+  }
 }
 
 
