@@ -1,4 +1,4 @@
-package org.ujar.basics.restful.bookstore.dto;
+package org.ujar.basics.restful.bookstore.web.dto;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.Set;
