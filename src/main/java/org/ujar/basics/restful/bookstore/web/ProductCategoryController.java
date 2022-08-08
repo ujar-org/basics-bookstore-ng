@@ -32,7 +32,7 @@ import org.ujar.boot.starter.restful.web.dto.PageRequestDto;
 @RequestMapping("/api/v1/product-categories")
 @Validated
 @RequiredArgsConstructor
-public class ProductCategoryController {
+class ProductCategoryController {
 
   private final ProductCategoryRepository categoryRepository;
 
@@ -54,7 +54,7 @@ public class ProductCategoryController {
                        description = "Entity not found",
                        content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
       })
-  public ResponseEntity<ProductCategory> findById(@PathVariable final Long id) {
+  ResponseEntity<ProductCategory> findById(@PathVariable final Long id) {
     final var category = existingCategory(id);
     return new ResponseEntity<>(category, HttpStatus.OK);
   }
@@ -73,7 +73,7 @@ public class ProductCategoryController {
                        content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
       })
   @Transactional(readOnly = true)
-  public ResponseEntity<List<ProductCategory>> findAll() {
+  ResponseEntity<List<ProductCategory>> findAll() {
     return new ResponseEntity<>(categoryRepository.findAll(), HttpStatus.OK);
   }
 
@@ -91,8 +91,8 @@ public class ProductCategoryController {
                        content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
       })
   @Transactional(readOnly = true)
-  public ResponseEntity<Page<Product>> findProductsByCategoryId(@PathVariable final Long id,
-                                                                @ParameterObject @Valid final PageRequestDto request) {
+  ResponseEntity<Page<Product>> findProductsByCategoryId(@PathVariable final Long id,
+                                                         @ParameterObject @Valid final PageRequestDto request) {
     final var category = existingCategory(id);
     final var pageRequest = PageRequest.of(request.getPage(), request.getSize());
     return new ResponseEntity<>(productRepository.findAllByCategory(category, pageRequest), HttpStatus.OK);

@@ -28,7 +28,7 @@ import org.ujar.boot.starter.restful.web.dto.PageRequestDto;
 @RequestMapping("/api/v1/states")
 @Validated
 @RequiredArgsConstructor
-public class GeoStateController {
+class GeoStateController {
   private final GeoStateRepository geoStateRepository;
 
   @GetMapping("/{id}")
@@ -47,7 +47,7 @@ public class GeoStateController {
                        description = "Entity not found",
                        content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
       })
-  public ResponseEntity<GeoState> findById(@PathVariable final Long id) {
+  ResponseEntity<GeoState> findById(@PathVariable final Long id) {
     return ResponseEntity.of(geoStateRepository.findById(id));
   }
 
@@ -65,7 +65,7 @@ public class GeoStateController {
                        content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
       })
   @Transactional(readOnly = true)
-  public ResponseEntity<Page<GeoState>> findAll(@ParameterObject @Valid final PageRequestDto request) {
+  ResponseEntity<Page<GeoState>> findAll(@ParameterObject @Valid final PageRequestDto request) {
     final var pageRequest = PageRequest.of(request.getPage(), request.getSize());
     return new ResponseEntity<>(geoStateRepository.findAll(pageRequest), HttpStatus.OK);
   }
