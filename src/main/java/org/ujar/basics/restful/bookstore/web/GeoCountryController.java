@@ -27,7 +27,7 @@ import org.ujar.basics.restful.bookstore.web.dto.ErrorResponse;
 @RequestMapping("/api/v1/countries")
 @Validated
 @RequiredArgsConstructor
-public class GeoCountryController {
+class GeoCountryController {
 
   private final GeoCountryRepository countryRepository;
 
@@ -49,7 +49,7 @@ public class GeoCountryController {
                        description = "Entity not found",
                        content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
       })
-  public ResponseEntity<GeoCountry> findById(@PathVariable final Long id) {
+  ResponseEntity<GeoCountry> findById(@PathVariable final Long id) {
     final var country = existingCountry(id);
     return new ResponseEntity<>(country, HttpStatus.OK);
   }
@@ -68,7 +68,7 @@ public class GeoCountryController {
                        content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
       })
   @Transactional(readOnly = true)
-  public ResponseEntity<List<GeoCountry>> findAll() {
+  ResponseEntity<List<GeoCountry>> findAll() {
     return new ResponseEntity<>(countryRepository.findAll(), HttpStatus.OK);
   }
 
@@ -86,7 +86,7 @@ public class GeoCountryController {
                        content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
       })
   @Transactional(readOnly = true)
-  public ResponseEntity<List<GeoState>> findStatesByCountryId(@PathVariable final Long id) {
+  ResponseEntity<List<GeoState>> findStatesByCountryId(@PathVariable final Long id) {
     final var country = existingCountry(id);
     return new ResponseEntity<>(stateRepository.findAllByCountry(country), HttpStatus.OK);
   }

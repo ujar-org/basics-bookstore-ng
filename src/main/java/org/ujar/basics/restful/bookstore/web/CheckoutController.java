@@ -12,12 +12,12 @@ import org.ujar.basics.restful.bookstore.web.dto.PurchaseResponse;
 @RestController
 @RequestMapping("/api/v1/checkout")
 @RequiredArgsConstructor
-public class CheckoutController {
+class CheckoutController {
 
   private final CheckoutService checkoutService;
 
   @PostMapping("/purchase")
-  public PurchaseResponse placeOrder(@RequestBody Purchase purchase) {
+  PurchaseResponse placeOrder(@RequestBody final Purchase purchase) {
     return checkoutService.placeOrder(purchase);
   }
 
