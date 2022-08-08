@@ -30,7 +30,7 @@ import org.ujar.boot.starter.restful.web.dto.PageRequestDto;
 @RequestMapping("/api/v1/products")
 @Validated
 @RequiredArgsConstructor
-public class ProductController {
+class ProductController {
   private final ProductRepository productRepository;
 
   @GetMapping("/{id}")
@@ -49,7 +49,7 @@ public class ProductController {
                        description = "Entity not found",
                        content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
       })
-  public ResponseEntity<Product> findById(@PathVariable final Long id) {
+  ResponseEntity<Product> findById(@PathVariable final Long id) {
     return ResponseEntity.of(productRepository.findById(id));
   }
 
@@ -67,7 +67,7 @@ public class ProductController {
                        content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
       })
   @Transactional(readOnly = true)
-  public ResponseEntity<Page<Product>> findAll(@RequestParam(required = false) final String name,
+  ResponseEntity<Page<Product>> findAll(@RequestParam(required = false) final String name,
                                                @ParameterObject @Valid final PageRequestDto request) {
     final var pageRequest = PageRequest.of(request.getPage(), request.getSize());
     Page<Product> page;
