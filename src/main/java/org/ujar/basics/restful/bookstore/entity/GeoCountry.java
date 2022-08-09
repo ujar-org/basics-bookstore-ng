@@ -1,6 +1,7 @@
 package org.ujar.basics.restful.bookstore.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,7 +46,7 @@ public class GeoCountry {
 
   @OneToMany(mappedBy = "country")
   @JsonIgnore
-  private List<GeoState> geoStates;
+  private List<GeoState> geoStates = new ArrayList<>();
 
   @Override
   public String toString() {
