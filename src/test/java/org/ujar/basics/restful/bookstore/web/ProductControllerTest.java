@@ -47,7 +47,7 @@ class ProductControllerTest {
   @Test
   @SneakyThrows
   void findAllByNameShouldReturnOneLinuxBook() {
-    var pageRequest = PageRequest.of(0, 10);
+    final var pageRequest = PageRequest.of(0, 10);
     when(productRepository.findByNameContaining("Linux", pageRequest))
         .thenReturn(new PageImpl<>(List.of(new Product())));
 
@@ -68,7 +68,7 @@ class ProductControllerTest {
         )
         .andExpect(status().isOk());
 
-    var captor = ArgumentCaptor.forClass(Pageable.class);
+    final var captor = ArgumentCaptor.forClass(Pageable.class);
 
     verify(productRepository).findAll(captor.capture());
     assertThat(captor.getValue().getPageNumber()).isEqualTo(1L);

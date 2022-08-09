@@ -47,7 +47,7 @@ class GeoStateControllerTest {
         )
         .andExpect(status().isOk());
 
-    var captor = ArgumentCaptor.forClass(Pageable.class);
+    final var captor = ArgumentCaptor.forClass(Pageable.class);
 
     verify(stateRepository).findAll(captor.capture());
     assertThat(captor.getValue().getPageNumber()).isEqualTo(1L);

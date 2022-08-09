@@ -62,8 +62,8 @@ class ProductCategoryControllerTest {
   @Test
   @SneakyThrows
   void findProductsByCategoryIdShouldReturnListWithOneBook() {
-    var category =  new ProductCategory(1L, "Books", new HashSet<>());
-    var pageRequest = PageRequest.of(0, 10);
+    final var category =  new ProductCategory(1L, "Books", new HashSet<>());
+    final var pageRequest = PageRequest.of(0, 10);
     when(categoryRepository.findById(1L)).thenReturn(Optional.of(category));
     when(productRepository.findAllByCategory(category, pageRequest))
         .thenReturn(new PageImpl<>(List.of(new Product())));
