@@ -59,7 +59,7 @@ class GeoCountryControllerTest {
   @Test
   @SneakyThrows
   void findStatesByCountryIdShouldReturnListWithOneState() {
-    var country = new GeoCountry(1L, "US", "USA", List.of());
+    final var country = new GeoCountry(1L, "US", "USA", List.of());
     when(countryRepository.findById(1L)).thenReturn(Optional.of(country));
     when(stateRepository.findAllByCountry(country))
         .thenReturn(List.of(new GeoState()));
