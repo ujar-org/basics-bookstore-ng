@@ -1,6 +1,6 @@
 ## Book Store REST API
 
-[![Build Status](https://drone.ujar.org/api/badges/ujar-org/basics-restful-bookstore/status.svg?ref=refs/heads/develop)](https://drone.ujar.org/ujar-org/basics-restful-bookstore)
+[![Build Status](https://drone.c2a2.com/api/badges/ujar-org/basics-restful-bookstore/status.svg?ref=refs/heads/develop)](https://drone.c2a2.com/ujar-org/basics-restful-bookstore)
 
 Simple bookstore app for demo purpose using Spring Boot.
 
@@ -45,7 +45,7 @@ java -jar target/*.jar
 The code follows [Google Code Conventions](https://google.github.io/styleguide/javaguide.html). Code
 quality is measured by:
 
-- [Sonarqube](https://sonarqube.ujar.org/dashboard?id=ujar-org%3Abasics-restful-bookstore)
+- [Sonarqube](https://sonarqube.c2a2.com/dashboard?id=ujar-org%3Abasics-restful-bookstore)
 - [PMD](https://pmd.github.io/)
 - [CheckStyle](https://checkstyle.sourceforge.io/)
 - [SpotBugs](https://spotbugs.github.io/)
