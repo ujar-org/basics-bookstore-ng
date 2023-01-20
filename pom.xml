@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.ujar.basics.restful</groupId>
+    <groupId>org.ujar.bs.rst</groupId>
     <artifactId>bs-rst-bookstore</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -49,7 +49,7 @@
         <sonar.exclusions>**/*Application.java</sonar.exclusions>
         <sonar.coverage.exclusions>**/*Config*.java,**/*Properties.java,**/*Test.java,**/Test*.java</sonar.coverage.exclusions>
         <ujar.boot.version>0.1.0-SNAPSHOT</ujar.boot.version>
-        <start-class>org.ujar.basics.restful.bookstore.BookstoreApplication</start-class>
+        <start-class>org.ujar.bs.rst.bookstore.BookstoreApplication</start-class>
     </properties>
 
     <dependencies>
