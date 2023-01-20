@@ -5,7 +5,7 @@ build :
 
 spring :
   application :
-    name : basics-restful-bookstore
+    name : bs-rst-bookstore
   datasource :
     type : com.zaxxer.hikari.HikariDataSource
     driver-class-name : ${DATASOURCE_DRIVER:org.h2.Driver}

@@ -37,7 +37,7 @@ steps :
       - mvn clean compile test-compile -B  --file pom.xml -s ../maven-settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
       - mvn pmd:check -B --file pom.xml -s ../maven-settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
       - mvn com.github.spotbugs:spotbugs-maven-plugin:check -Dspotbugs.xmlOutput=true -Dspotbugs.failOnError=true -Dspotbugs.includeTests=true  --file pom.xml -s ../maven-settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
-      - mvn org.jacoco:jacoco-maven-plugin:prepare-agent package org.jacoco:jacoco-maven-plugin:report sonar:sonar -Dsonar.host.url=$SONAR_HOST -Dsonar.login=$SONAR_TOKEN -Dsonar.projectKey=ujar-org:basics-restful-bookstore -Dsonar.projectName=ujar-org:basics-restful-bookstore --batch-mode  --file pom.xml -s ../maven-settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
+      - mvn org.jacoco:jacoco-maven-plugin:prepare-agent package org.jacoco:jacoco-maven-plugin:report sonar:sonar -Dsonar.host.url=$SONAR_HOST -Dsonar.login=$SONAR_TOKEN -Dsonar.projectKey=ujar-org:bs-rst-bookstore -Dsonar.projectName=ujar-org:bs-rst-bookstore --batch-mode  --file pom.xml -s ../maven-settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
     when :
       branch :
         include :
@@ -97,7 +97,7 @@ steps :
         from_secret : DOCKER_USERNAME
       password :
         from_secret : DOCKER_PASSWORD
-      repo : docker-registry.c2a2.com/ujar/basics-restful-bookstore
+      repo : docker-registry.c2a2.com/ujar/bs-rst-bookstore
       registry : docker-registry.c2a2.com
       tags :
         - latest

@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.ujar.basics.restful</groupId>
-    <artifactId>restful-bookstore</artifactId>
+    <artifactId>bs-rst-bookstore</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>basics-restful-bookstore</name>
+    <name>bs-rst-bookstore</name>
     <description>Simple bookstore app for demo purpose using Spring Boot.</description>
     <licenses>
         <license>
@@ -32,7 +32,7 @@
     </developers>
 
     <scm>
-        <connection>scm:git:https://github.com/ujar-org/basics-restful-bookstore.git</connection>
+        <connection>scm:git:https://github.com/ujar-org/bs-rst-bookstore.git</connection>
         <tag>HEAD</tag>
     </scm>
 
