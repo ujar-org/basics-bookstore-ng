@@ -1,6 +1,6 @@
 ## Book Store REST API
 
-[![Build Status](https://drone.c2a2.com/api/badges/ujar-org/basics-restful-bookstore/status.svg?ref=refs/heads/develop)](https://drone.c2a2.com/ujar-org/basics-restful-bookstore)
+[![Build Status](https://drone.c2a2.com/api/badges/ujar-org/bs-rst-bookstore/status.svg?ref=refs/heads/develop)](https://drone.c2a2.com/ujar-org/bs-rst-bookstore)
 
 Simple bookstore app for demo purpose using Spring Boot.
 
@@ -10,9 +10,9 @@ Simple bookstore app for demo purpose using Spring Boot.
 - Clone source code to the local machine:
 
 ```
-git clone https://github.com/ujar-org/basics-restful-bookstore.git
+git clone https://github.com/ujar-org/bs-rst-bookstore.git
 
-cd basics-restful-bookstore
+cd bs-rst-bookstore
 ```
 
 - Install Docker [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) - at least 1.6.0
@@ -45,7 +45,7 @@ java -jar target/*.jar
 The code follows [Google Code Conventions](https://google.github.io/styleguide/javaguide.html). Code
 quality is measured by:
 
-- [Sonarqube](https://sonarqube.c2a2.com/dashboard?id=ujar-org%3Abasics-restful-bookstore)
+- [Sonarqube](https://sonarqube.c2a2.com/dashboard?id=ujar-org%3Abs-rst-bookstore)
 - [PMD](https://pmd.github.io/)
 - [CheckStyle](https://checkstyle.sourceforge.io/)
 - [SpotBugs](https://spotbugs.github.io/)
