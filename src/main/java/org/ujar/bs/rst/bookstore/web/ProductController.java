@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.ujar.boot.starter.restful.web.dto.PageRequestDto;
 import org.ujar.bs.rst.bookstore.entity.Product;
 import org.ujar.bs.rst.bookstore.repository.ProductRepository;
 import org.ujar.bs.rst.bookstore.web.dto.ErrorResponse;
-import org.ujar.boot.starter.restful.web.dto.PageRequestDto;
 
 @RestController
 @Tag(name = "Product controller", description = "API for products management.")
