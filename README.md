@@ -1,6 +1,6 @@
 ## Book Store REST API
 
-[![Build Status](https://drone.c2a2.com/api/badges/ujar-org/bs-rst-bookstore/status.svg?ref=refs/heads/develop)](https://drone.c2a2.com/ujar-org/bs-rst-bookstore)
+[![Build Status](http://iaolg9igjr3tghootxslfe.webrelay.io/api/badges/ujar-org/bs-rst-bookstore/status.svg?ref=refs/heads/develop)](http://iaolg9igjr3tghootxslfe.webrelay.io/ujar-org/bs-rst-bookstore)
 
 Simple bookstore app for demo purpose using Spring Boot.
 
