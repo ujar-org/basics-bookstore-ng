@@ -2,13 +2,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.ujar.bs.rst</groupId>
-    <artifactId>bs-rst-bookstore</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <groupId>org.ujar</groupId>
+    <artifactId>sample-bookstore-restful-api</artifactId>
+    <version>23.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>bs-rst-bookstore</name>
-    <description>Simple bookstore app for demo purpose using Spring Boot.</description>
+    <name>bookstore-restful-api</name>
+    <description>Sample book store REST API service using Spring Boot.</description>
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -32,19 +32,20 @@
     </developers>
 
     <parent>
-        <groupId>org.ujar.parent</groupId>
-        <artifactId>ujar-parent-pom</artifactId>
-        <version>0.1.0-SNAPSHOT</version>
+        <groupId>org.ujar.boot</groupId>
+        <artifactId>ujar-boot-parent-pom</artifactId>
+        <version>23.0.0-SNAPSHOT</version>
     </parent>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>19</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <sonar.exclusions>**/*Application.java</sonar.exclusions>
         <sonar.coverage.exclusions>**/*Config*.java,**/*Properties.java,**/*Test.java,**/Test*.java</sonar.coverage.exclusions>
-        <ujar.boot.version>0.1.0-SNAPSHOT</ujar.boot.version>
-        <start-class>org.ujar.bs.rst.bookstore.BookstoreApplication</start-class>
+        <checkstyle.skip>false</checkstyle.skip>
+        <maven.gitcommitid.skip>false</maven.gitcommitid.skip>
+        <start-class>org.ujar.bookstore.BookstoreApplication</start-class>
     </properties>
 
     <dependencies>
@@ -64,18 +65,15 @@
         </dependency>
         <dependency>
             <groupId>org.ujar.boot</groupId>
-            <artifactId>ujar-boot-starter-logbook</artifactId>
-            <version>${ujar.boot.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.ujar.boot</groupId>
             <artifactId>ujar-boot-starter-cache</artifactId>
-            <version>${ujar.boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.ujar.boot</groupId>
             <artifactId>ujar-boot-starter-restful</artifactId>
-            <version>${ujar.boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ujar.boot</groupId>
+            <artifactId>ujar-boot-starter-observability</artifactId>
         </dependency>
         <dependency>
             <groupId>net.logstash.logback</groupId>
@@ -88,19 +86,11 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.liquibase.ext</groupId>
-            <artifactId>liquibase-hibernate5</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>annotations</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -110,11 +100,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.tngtech.archunit</groupId>
-            <artifactId>archunit-junit5</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -137,19 +122,7 @@
                 <dependency>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-devtools</artifactId>
-                </dependency>
-            </dependencies>
-        </profile>
-        <profile>
-            <id>testcontainers-support</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <dependencies>
-                <dependency>
-                    <groupId>org.testcontainers</groupId>
-                    <artifactId>postgresql</artifactId>
-                    <scope>test</scope>
+                    <scope>runtime</scope>
                 </dependency>
             </dependencies>
         </profile>
@@ -181,8 +154,24 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
             </plugin>
             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
                 <groupId>io.github.git-commit-id</groupId>
                 <artifactId>git-commit-id-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
