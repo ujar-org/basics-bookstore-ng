@@ -30,7 +30,9 @@ public class GeoCountry {
   @Id
   @SequenceGenerator(
       name = "geo_country_id_seq",
-      sequenceName = "geo_country_id_seq"
+      sequenceName = "geo_country_id_seq",
+      initialValue = 1,
+      allocationSize = 1
   )
   @GeneratedValue(
       strategy = GenerationType.SEQUENCE,

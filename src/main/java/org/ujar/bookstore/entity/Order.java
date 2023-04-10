@@ -37,7 +37,9 @@ public class Order {
   @Id
   @SequenceGenerator(
       name = "checkout_order_id_seq",
-      sequenceName = "checkout_order_id_seq"
+      sequenceName = "checkout_order_id_seq",
+      initialValue = 1,
+      allocationSize = 1
   )
   @GeneratedValue(
       strategy = GenerationType.SEQUENCE,

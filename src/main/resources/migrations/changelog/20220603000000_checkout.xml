@@ -8,7 +8,7 @@
 
     <changeSet id="20220603000000" author="ujar-bookstore">
 
-        <createSequence sequenceName="checkout_address_id_seq" startValue="1050" incrementBy="50"/>
+        <createSequence sequenceName="checkout_address_id_seq" startValue="1" incrementBy="1"/>
         <createTable tableName="checkout_address">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
@@ -20,7 +20,7 @@
             <column name="zip_code" type="varchar(255)"/>
         </createTable>
 
-        <createSequence sequenceName="checkout_customer_id_seq" startValue="1050" incrementBy="50"/>
+        <createSequence sequenceName="checkout_customer_id_seq" startValue="1" incrementBy="1"/>
         <createTable tableName="checkout_customers">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
@@ -31,7 +31,7 @@
         </createTable>
 
 
-        <createSequence sequenceName="checkout_order_id_seq" startValue="1050" incrementBy="50"/>
+        <createSequence sequenceName="checkout_order_id_seq" startValue="1" incrementBy="1"/>
         <createTable tableName="checkout_orders">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
@@ -69,7 +69,7 @@
                                  referencedColumnNames="id"
                                  referencedTableName="checkout_address"/>
 
-        <createSequence sequenceName="checkout_order_item_id_seq" startValue="1050" incrementBy="50"/>
+        <createSequence sequenceName="checkout_order_item_id_seq" startValue="1" incrementBy="1"/>
         <createTable tableName="checkout_order_items">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>

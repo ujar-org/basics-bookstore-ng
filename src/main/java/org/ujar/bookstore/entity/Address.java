@@ -28,11 +28,13 @@ public class Address {
   @Id
   @SequenceGenerator(
       name = "checkout_address_id_seq",
-      sequenceName = "checkout_address_id_seq"
+      sequenceName = "checkout_address_id_seq",
+      initialValue = 1,
+      allocationSize = 1
   )
   @GeneratedValue(
       strategy = GenerationType.SEQUENCE,
-      generator = "geo_country_id_seq"
+      generator = "checkout_address_id_seq"
   )
   @Column(name = "id")
   private Long id;
