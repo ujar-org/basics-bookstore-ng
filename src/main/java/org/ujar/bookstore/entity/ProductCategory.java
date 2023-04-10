@@ -31,7 +31,9 @@ public class ProductCategory {
   @Id
   @SequenceGenerator(
       name = "product_category_id_seq",
-      sequenceName = "product_category_id_seq"
+      sequenceName = "product_category_id_seq",
+      initialValue = 1,
+      allocationSize = 1
   )
   @GeneratedValue(
       strategy = GenerationType.SEQUENCE,

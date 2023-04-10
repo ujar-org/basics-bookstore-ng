@@ -30,7 +30,9 @@ public class Customer {
   @Id
   @SequenceGenerator(
       name = "checkout_customer_id_seq",
-      sequenceName = "checkout_customer_id_seq"
+      sequenceName = "checkout_customer_id_seq",
+      initialValue = 1,
+      allocationSize = 1
   )
   @GeneratedValue(
       strategy = GenerationType.SEQUENCE,
