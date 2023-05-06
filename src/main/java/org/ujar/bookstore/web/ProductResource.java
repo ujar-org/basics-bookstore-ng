@@ -13,7 +13,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.ujar.bookstore.entity.Product;
 import org.ujar.bookstore.repository.ProductRepository;
+import org.ujar.boot.restful.web.ApiError;
 import org.ujar.boot.restful.web.PaginationRequest;
 
 @RestController
@@ -41,13 +41,13 @@ class ProductResource {
                        description = "Success"),
           @ApiResponse(responseCode = "500",
                        description = "Internal error",
-                       content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+                       content = @Content(schema = @Schema(implementation = ApiError.class))),
           @ApiResponse(responseCode = "400",
                        description = "Bad request",
-                       content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+                       content = @Content(schema = @Schema(implementation = ApiError.class))),
           @ApiResponse(responseCode = "404",
                        description = "Entity not found",
-                       content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+                       content = @Content(schema = @Schema(implementation = ApiError.class)))
       })
   ResponseEntity<Product> findById(@PathVariable final Long id) {
     return ResponseEntity.of(productRepository.findById(id));
@@ -61,12 +61,11 @@ class ProductResource {
                        description = "Success"),
           @ApiResponse(responseCode = "500",
                        description = "Internal error",
-                       content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+                       content = @Content(schema = @Schema(implementation = ApiError.class))),
           @ApiResponse(responseCode = "400",
                        description = "Bad request",
-                       content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+                       content = @Content(schema = @Schema(implementation = ApiError.class))),
       })
-  @Transactional(readOnly = true)
   ResponseEntity<Page<Product>> findAll(@RequestParam(required = false) final String name,
                                         @ParameterObject @Valid final PaginationRequest request) {
     final var pageRequest = PageRequest.of(request.getPage(), request.getSize());

@@ -10,7 +10,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +20,7 @@ import org.ujar.bookstore.entity.GeoState;
 import org.ujar.bookstore.exception.EntityNotFoundException;
 import org.ujar.bookstore.repository.GeoCountryRepository;
 import org.ujar.bookstore.repository.GeoStateRepository;
+import org.ujar.boot.restful.web.ApiError;
 
 @RestController
 @Tag(name = "Geo Country", description = "API for geo countries management.")
@@ -41,13 +41,13 @@ class GeoCountryResource {
                        description = "Success"),
           @ApiResponse(responseCode = "500",
                        description = "Internal error",
-                       content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+                       content = @Content(schema = @Schema(implementation = ApiError.class))),
           @ApiResponse(responseCode = "400",
                        description = "Bad request",
-                       content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+                       content = @Content(schema = @Schema(implementation = ApiError.class))),
           @ApiResponse(responseCode = "404",
                        description = "Entity not found",
-                       content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+                       content = @Content(schema = @Schema(implementation = ApiError.class)))
       })
   ResponseEntity<GeoCountry> findById(@PathVariable final Long id) {
     final var country = existingCountry(id);
@@ -62,12 +62,11 @@ class GeoCountryResource {
                        description = "Success"),
           @ApiResponse(responseCode = "500",
                        description = "Internal error",
-                       content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+                       content = @Content(schema = @Schema(implementation = ApiError.class))),
           @ApiResponse(responseCode = "400",
                        description = "Bad request",
-                       content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+                       content = @Content(schema = @Schema(implementation = ApiError.class))),
       })
-  @Transactional(readOnly = true)
   ResponseEntity<List<GeoCountry>> findAll() {
     return new ResponseEntity<>(countryRepository.findAll(), HttpStatus.OK);
   }
@@ -80,12 +79,11 @@ class GeoCountryResource {
                        description = "Success"),
           @ApiResponse(responseCode = "500",
                        description = "Internal error",
-                       content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+                       content = @Content(schema = @Schema(implementation = ApiError.class))),
           @ApiResponse(responseCode = "400",
                        description = "Bad request",
-                       content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+                       content = @Content(schema = @Schema(implementation = ApiError.class))),
       })
-  @Transactional(readOnly = true)
   ResponseEntity<List<GeoState>> findStatesByCountryId(@PathVariable final Long id) {
     final var country = existingCountry(id);
     return new ResponseEntity<>(stateRepository.findAllByCountry(country), HttpStatus.OK);
