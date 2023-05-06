@@ -14,7 +14,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +24,7 @@ import org.ujar.bookstore.entity.ProductCategory;
 import org.ujar.bookstore.exception.EntityNotFoundException;
 import org.ujar.bookstore.repository.ProductCategoryRepository;
 import org.ujar.bookstore.repository.ProductRepository;
+import org.ujar.boot.restful.web.ApiError;
 import org.ujar.boot.restful.web.PaginationRequest;
 
 @RestController
@@ -46,13 +46,13 @@ class ProductCategoryResource {
                        description = "Success"),
           @ApiResponse(responseCode = "500",
                        description = "Internal error",
-                       content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+                       content = @Content(schema = @Schema(implementation = ApiError.class))),
           @ApiResponse(responseCode = "400",
                        description = "Bad request",
-                       content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+                       content = @Content(schema = @Schema(implementation = ApiError.class))),
           @ApiResponse(responseCode = "404",
                        description = "Entity not found",
-                       content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+                       content = @Content(schema = @Schema(implementation = ApiError.class)))
       })
   ResponseEntity<ProductCategory> findById(@PathVariable final Long id) {
     final var category = existingCategory(id);
@@ -67,12 +67,11 @@ class ProductCategoryResource {
                        description = "Success"),
           @ApiResponse(responseCode = "500",
                        description = "Internal error",
-                       content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+                       content = @Content(schema = @Schema(implementation = ApiError.class))),
           @ApiResponse(responseCode = "400",
                        description = "Bad request",
-                       content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+                       content = @Content(schema = @Schema(implementation = ApiError.class))),
       })
-  @Transactional(readOnly = true)
   ResponseEntity<List<ProductCategory>> findAll() {
     return new ResponseEntity<>(categoryRepository.findAll(), HttpStatus.OK);
   }
@@ -85,12 +84,11 @@ class ProductCategoryResource {
                        description = "Success"),
           @ApiResponse(responseCode = "500",
                        description = "Internal error",
-                       content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+                       content = @Content(schema = @Schema(implementation = ApiError.class))),
           @ApiResponse(responseCode = "400",
                        description = "Bad request",
-                       content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+                       content = @Content(schema = @Schema(implementation = ApiError.class))),
       })
-  @Transactional(readOnly = true)
   ResponseEntity<Page<Product>> findProductsByCategoryId(@PathVariable final Long id,
                                                          @ParameterObject @Valid final PaginationRequest request) {
     final var category = existingCategory(id);
