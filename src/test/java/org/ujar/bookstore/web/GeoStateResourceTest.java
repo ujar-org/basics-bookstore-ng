@@ -10,13 +10,14 @@ import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.web.servlet.MockMvc;
 import org.ujar.bookstore.repository.GeoStateRepository;
 
-@WebMvcTest(value = GeoStateResource.class)
+@WebMvcTest(value = GeoStateResource.class, excludeAutoConfiguration = {SecurityAutoConfiguration.class})
 class GeoStateResourceTest {
 
   private final MockMvc mockMvc;

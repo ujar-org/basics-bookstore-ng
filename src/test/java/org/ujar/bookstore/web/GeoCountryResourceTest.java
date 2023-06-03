@@ -14,6 +14,7 @@ import java.util.Optional;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
@@ -22,7 +23,7 @@ import org.ujar.bookstore.entity.GeoState;
 import org.ujar.bookstore.repository.GeoCountryRepository;
 import org.ujar.bookstore.repository.GeoStateRepository;
 
-@WebMvcTest(value = GeoCountryResource.class)
+@WebMvcTest(value = GeoCountryResource.class, excludeAutoConfiguration = {SecurityAutoConfiguration.class})
 class GeoCountryResourceTest {
 
   private final MockMvc mockMvc;

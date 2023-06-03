@@ -15,6 +15,7 @@ import java.util.Optional;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.PageImpl;
@@ -25,7 +26,7 @@ import org.ujar.bookstore.entity.ProductCategory;
 import org.ujar.bookstore.repository.ProductCategoryRepository;
 import org.ujar.bookstore.repository.ProductRepository;
 
-@WebMvcTest(value = ProductCategoryResource.class)
+@WebMvcTest(value = ProductCategoryResource.class, excludeAutoConfiguration = {SecurityAutoConfiguration.class})
 class ProductCategoryResourceTest {
 
   private final MockMvc mockMvc;

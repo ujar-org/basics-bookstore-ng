@@ -1,7 +1,7 @@
 version : '3'
 services :
   postgres :
-    image : "postgres:13.10"
+    image : "postgres:13.11"
     container_name : quickstart-dev-bookstore-postgres
     restart : unless-stopped
     ports :
@@ -13,7 +13,7 @@ services :
 
   prometheus :
     container_name : quickstart-dev-bookstore-prometheus
-    image : prom/prometheus:v2.42.0
+    image : prom/prometheus:v2.44.0
     volumes :
       - ./src/main/docker/prometheus/:/etc/prometheus/
     command :
@@ -23,7 +23,7 @@ services :
     network_mode : 'host' # to test locally running service
   grafana :
     container_name : quickstart-dev-bookstore-grafana
-    image : grafana/grafana:9.3.6
+    image : grafana/grafana:9.5.2
     volumes :
       - ./src/main/docker/grafana/provisioning/:/etc/grafana/provisioning/
     environment :
