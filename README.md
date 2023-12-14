@@ -8,7 +8,7 @@ Simple bookstore app for demo purpose using Spring Boot.
 - Clone source code to the local machine:
 
 ```
-git clone https://github.com/ujar-org/bookstore-restful-api.git
+git clone https://github.com/KnowHowSpringBoot/bookstore-restful-api.git
 
 cd bookstore-restful-api
 ```
