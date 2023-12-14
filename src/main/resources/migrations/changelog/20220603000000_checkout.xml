@@ -6,7 +6,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="20220603000000" author="ujar-bookstore">
+    <changeSet id="20220603000000" author="knowhowto-bookstore">
 
         <createSequence sequenceName="checkout_address_id_seq" startValue="1" incrementBy="1"/>
         <createTable tableName="checkout_address">
