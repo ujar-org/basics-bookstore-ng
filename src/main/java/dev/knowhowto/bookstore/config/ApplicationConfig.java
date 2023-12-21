@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaAuditing
 @EnableTransactionManagement
 @EnableSpringDataWebSupport
-@OpenAPIDefinition(info = @Info(title = "Bookstore API", version = "23.0.0"))
+@OpenAPIDefinition(info = @Info(title = "Bookstore API", version = "24.0.0"))
 class ApplicationConfig {
 
 }
