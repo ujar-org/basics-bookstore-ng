@@ -18,7 +18,7 @@ info :
 
 spring :
   application :
-    name : sample-bookstore-restful-api
+    name : sample-bookstore-mvc-rest-api
   liquibase :
     change-log : migrations/master.xml
   datasource :
