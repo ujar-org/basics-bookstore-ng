@@ -8,9 +8,9 @@ Simple bookstore app for demo purpose using Spring Boot.
 - Clone source code to the local machine:
 
 ```
-git clone https://github.com/KnowHowSpringBoot/bookstore-restful-api.git
+git clone https://github.com/KnowHowSpringBoot/bookstore-mvc-rest-api.git
 
-cd bookstore-restful-api
+cd bookstore-mvc-rest-api
 ```
 
 - Install Docker [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
@@ -32,7 +32,7 @@ using [Maven](https://spring.io/guides/gs/maven/). You can build a jar files and
 ./mvnw package
 ```
 
-- Run **sample-bookstore-restful-api** app:
+- Run **sample-bookstore-mvc-rest-api** app:
 
 ```
 java -jar target/*.jar
