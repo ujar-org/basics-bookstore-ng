@@ -3,6 +3,8 @@ package dev.knowhowto.bookstore.web;
 import jakarta.validation.Valid;
 import java.util.List;
 
+import com.iqkv.boot.web.rest.ApiError;
+import com.iqkv.boot.web.rest.PaginationRequest;
 import dev.knowhowto.bookstore.entity.Product;
 import dev.knowhowto.bookstore.entity.ProductCategory;
 import dev.knowhowto.bookstore.exception.EntityNotFoundException;
@@ -14,8 +16,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import com.iqkv.boot.web.rest.ApiError;
-import com.iqkv.boot.web.rest.PaginationRequest;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
