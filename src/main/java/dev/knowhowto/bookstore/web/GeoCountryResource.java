@@ -2,6 +2,7 @@ package dev.knowhowto.bookstore.web;
 
 import java.util.List;
 
+import com.iqkv.boot.web.rest.ApiError;
 import dev.knowhowto.bookstore.entity.GeoCountry;
 import dev.knowhowto.bookstore.entity.GeoState;
 import dev.knowhowto.bookstore.exception.EntityNotFoundException;
@@ -13,7 +14,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import com.iqkv.boot.web.rest.ApiError;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
