@@ -3,8 +3,8 @@ package com.iqkv.incubator.sample.bookstore.web;
 import jakarta.validation.Valid;
 import java.util.List;
 
-import com.iqkv.boot.web.rest.ApiError;
-import com.iqkv.boot.web.rest.PaginationRequest;
+import com.iqkv.boot.mvc.rest.ApiError;
+import com.iqkv.boot.mvc.rest.PaginationRequest;
 import com.iqkv.incubator.sample.bookstore.entity.Product;
 import com.iqkv.incubator.sample.bookstore.entity.ProductCategory;
 import com.iqkv.incubator.sample.bookstore.exception.EntityNotFoundException;

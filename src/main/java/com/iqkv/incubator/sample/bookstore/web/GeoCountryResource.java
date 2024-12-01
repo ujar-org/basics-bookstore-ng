@@ -2,7 +2,7 @@ package com.iqkv.incubator.sample.bookstore.web;
 
 import java.util.List;
 
-import com.iqkv.boot.web.rest.ApiError;
+import com.iqkv.boot.mvc.rest.ApiError;
 import com.iqkv.incubator.sample.bookstore.entity.GeoCountry;
 import com.iqkv.incubator.sample.bookstore.entity.GeoState;
 import com.iqkv.incubator.sample.bookstore.exception.EntityNotFoundException;
