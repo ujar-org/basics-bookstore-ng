@@ -1,4 +1,4 @@
-## Book Store REST API
+# 🚀 Book Store REST API
 
 Simple bookstore app for demo purpose using Spring Boot.
 
