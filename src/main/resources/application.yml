@@ -1,4 +1,4 @@
-iqkv :
+application-settings :
   info :
     description : '@project.description@'
     relative-path : ${SERVER_SERVLET_CONTEXT_PATH:/}
